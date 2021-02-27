@@ -239,6 +239,7 @@ def parse_artist(artist):
     inner_els = {"area": parse_area,
                  "begin-area": parse_area,
                  "end-area": parse_area,
+                 "genre-list": parse_genre_list,
                  "life-span": parse_lifespan,
                  "recording-list": parse_recording_list,
                  "relation-list": parse_relation_list,
@@ -301,6 +302,12 @@ def parse_event(event):
     result.update(parse_elements(elements, inner_els, event))
 
     return result
+
+def parse_genre_list(gl):
+    return [parse_genre(g) for g in gl]
+
+def parse_genre(genre):
+    return parse_tag(genre)
 
 def parse_instrument(instrument):
     result = {}
