@@ -1084,13 +1084,14 @@ def _browse_impl(entity, includes, limit, offset, params, release_status=[], rel
 # Browse include are a subset of regular get includes, so we check them here
 # and the test in _do_mb_query will pass anyway.
 @_docstring_browse("artist")
-def browse_artists(recording=None, release=None, release_group=None,
+def browse_artists(area=None, recording=None, release=None, release_group=None,
                    work=None, includes=[], limit=None, offset=None):
     """Get all artists linked to a recording, a release or a release group.
     You need to give one MusicBrainz ID.
 
     *Available includes*: {includes}"""
-    params = {"recording": recording,
+    params = {"area": area,
+              "recording": recording,
               "release": release,
               "release-group": release_group,
               "work": work}
